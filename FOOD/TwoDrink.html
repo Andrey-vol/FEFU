@@ -1,0 +1,130 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    МАГАЗИН: СЛЕДКИЕ ГАЗИРОВАННЫЕ НАПИТКИ. ВЫБОР
+{% endblock %}
+
+
+{% block content %}
+    {{ formfield_errors 'todrink_time' }}
+    
+    <style>
+        .img-fluid {
+            width:  300px;
+            height: 300px;
+            background-size: cover;
+        }
+        #fake {
+            height: 8px;
+            color: #212529;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: .25rem;
+            margin-top: 10px;
+            margin-bottom: 3px;
+    
+        } 
+        
+    </style>
+    <p>
+        Нам бы хотелось более подробно узнать о Ваших предпочтениях. Пожалуйста, укажите максимальную цену, за которую 
+        Вы готовы приобрести товары ниже. Если Вы не готовы приобрести товар вовсе, укажите 0. 
+    </p>
+    <div class="container">
+        
+        <div class="row">
+            <div class="col">
+                <img src="{% static 'FOOD/coke.jpg' %}" class="img-fluid" alt="Picture 1">
+                <p>Сладкий газ. напиток </p>
+                {{ formfield 'coke'}}
+            </div>
+            <div class="col">
+                <img src="{% static 'FOOD/everness.png' %}" class="img-fluid" alt="Picture 1">
+                <p>Сладкий газ. напиток со вкусом "биттер-лимон" </p>
+                {{ formfield 'lemondr'}}
+            </div>
+        </div>
+        <div class="row">
+            <button type="button" id="fake"></button>
+        </div>
+        <div class="row">
+            <div class="col">
+                <img src="{% static 'FOOD/peach_dr.png' %}" class="img-fluid" alt="Picture 2">
+                <p>Сладкий газ. напиток со вкусом "персик"</p>
+                {{ formfield 'persik'}}
+            </div>
+            <div class="col">
+                <img src="{% static 'FOOD/fanta.png' %}" class="img-fluid" alt="Picture 2">
+                <p>Сладкий газ. напиток</p>
+                {{ formfield 'fanta'}}
+            </div>
+        </div>
+        <div class="row">
+            <button type="button" id="fake"></button>
+        </div>
+        <div class="row">
+            <div class="col">
+                <img src="{% static 'FOOD/pepsi.png' %}" class="img-fluid" alt="Picture 3">
+                <p>Сладкий газ. напиток</p>
+                {{ formfield 'pepsi'}} 
+            </div>
+            <div class="col">
+                <img src="{% static 'FOOD/soju_yogurt.png' %}" class="img-fluid" alt="Picture 3">
+                <p>Сладкий газ. напиток со вкусом "соджу-йогурт"</p>
+                {{ formfield 'soju'}} 
+            </div>
+        </div>
+        <div class="row">
+            <button type="button" id="fake"></button>
+        </div>
+        <div class="row">
+            <div class="col">
+                <img src="{% static 'FOOD/lichee.png' %}" class="img-fluid" alt="Picture 4">
+                <p>Сладкий газ. напиок со вкусом "личи" </p>
+                {{ formfield 'lich'}}
+            </div>
+            <div class="col">
+                <img src="{% static 'FOOD/sprite.png' %}" class="img-fluid" alt="Picture 4">
+                <p>Сладкий газ. напиток</p>
+                {{ formfield 'sprite'}}
+            </div>
+        </div>
+        
+    </div>
+
+    
+    <button class="btn btn-primary next-btn" id="nxt" onclick="doTimeStuff()" >ДАЛЕЕ</button>
+
+    <input type="hidden" name="todrink_time" id="todrink_time" />
+
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        var pageTimeElapsed = 0;
+        var pageTimerID = -1;
+
+        window.onload = function() { 
+            if(pageTimerID == -1){
+              pageTimerID = setInterval(pageTick, 1000);
+            } 
+        };
+        
+             
+        function pageTick() {
+            pageTimeElapsed++
+            document.getElementById("todrink_time").value = pageTimeElapsed;
+        }
+
+                
+
+
+        //document.getElementById('wallet') = function () {
+            //sessionStorage.setItem('my-input_save', wallet);
+            //}
+        
+        
+    </script>
+{% endblock %}

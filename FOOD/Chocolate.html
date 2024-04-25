@@ -1,0 +1,416 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    МАГАЗИН: ШОКОЛАД
+{% endblock %}
+
+
+{% block content %}
+    {{ formfield_errors 'choco_time' }}
+    {{ formfield_errors 'choco_wallet' }}
+    {{ formfield_errors 'russia' }}
+    {{ formfield_errors 'nerussia' }}
+    {{ formfield_errors 'arahis' }}
+    {{ formfield_errors 'nearahis' }}
+    {{ formfield_errors 'slivki' }}
+    {{ formfield_errors 'neslivki' }}
+    {{ formfield_errors 'klubnika' }}
+    {{ formfield_errors 'neklubnika' }}
+    {{ formfield_errors 'alena' }}
+    {{ formfield_errors 'nealena' }}
+    {{ formfield_errors 'mindal' }}
+    {{ formfield_errors 'nemindal' }}
+    {{ formfield_errors 'yagody' }}
+    {{ formfield_errors 'neyagody' }}
+    {{ formfield_errors 'orehi' }}
+    {{ formfield_errors 'neorehi' }}
+
+    <style>
+        .img-fluid {
+            width:  300px;
+            height: 300px;
+            background-size: cover;
+        }
+        
+        #persona { 
+            color: rgb(35, 16, 52); 
+            font-size: 18px; 
+            margin-top: 10px;
+        }
+        #fake {
+            height: 8px;
+            color: #212529;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: .25rem;
+            margin-top: 10px;
+            margin-bottom: 3px;
+    
+        } 
+    </style>
+    <p>
+        Представьте, что Вы находитесь в магазине. Пожалуйста, выберите те товары, которые бы Вы захотели купить. Внизу страницы будет
+        указана итоговая сумма, которую Вы бы потратили на приобретение товаров. 
+        При нажитии на кнопку "КУПИТЬ" она подсветится зеленым цветом. Если Вы передумаете и захотите убрать товар из списка покупок, 
+        нажмите "УБРАТЬ", в таком случае кнопка подсветится красным. 
+        Если Вы не захотите брать ни один из товаров, представленных в группе, просто нажмите "ДАЛЕЕ"
+    </p>
+    <div class="container">
+        
+        <div class="row">
+            <div class="col">
+                <img src="{% static 'FOOD/gener_russia.png' %}" class="img-fluid" alt="Picture 1">
+                <p>Шоколад темный  76₽</p>
+                <div class="row">
+                    <div class="col">
+                        <button onclick="Lemon()" class="btn btn-primary choco-btn" id="gener" data-choco="gener" data-price="76" type="button">КУПИТЬ</button>
+                    </div>
+                    <div class="col">
+                        <button onclick="NeLemon()" class="btn btn-primary choco-btn" id="nogener" data-choco="nogener" data-price="-76" type="button">УБРАТЬ</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <img src="{% static 'FOOD/peanut.png' %}" class="img-fluid" alt="Picture 1">
+                <p>Шоколад с соленым арахисом и крекером  94₽</p>
+                <div class="row">
+                    <div class="col">
+                        <button onclick="Milk()" class="btn btn-primary choco-btn" id="black" data-choco="black" data-price="94" type="button">КУПИТЬ</button>
+                    </div>
+                    <div class="col">
+                        <button onclick="NeMilk()" class="btn btn-primary choco-btn" id="noblack" data-choco="noblack" data-price="-94" type="button">УБРАТЬ</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <button type="button" id="fake"></button>
+        </div>
+        <div class="row">
+            <div class="col">
+                <img src="{% static 'FOOD/cream_cook_choc.png' %}" class="img-fluid" alt="Picture 2">
+                <p>Шоколад со сливками и печеньем  101₽</p>
+                <div class="row">
+                    <div class="col">
+                        <button onclick="Shokol()" class="btn btn-primary choco-btn" id="cream" data-choco="cream" data-price="101" type="button">КУПИТЬ</button>
+                    </div>
+                    <div class="col">
+                        <button onclick="NeShokol()" class="btn btn-primary choco-btn" id="nocream" data-choco="nocream" data-price="-101" type="button">УБРАТЬ</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <img src="{% static 'FOOD/AG_strab.jpeg' %}" class="img-fluid" alt="Picture 2">
+                <p>Шоколад с клубнично-йогуртовой начинкой  91₽</p>
+                <div class="row">
+                    <div class="col">
+                        <button onclick="Ore()" class="btn btn-primary choco-btn" id="strawb" data-choco="strawb" data-price="91" type="button">КУПИТЬ</button>
+                    </div>
+                    <div class="col">
+                        <button onclick="NeOre()" class="btn btn-primary choco-btn" id="nostrawb" data-choco="nostrawb" data-price="-91" type="button">УБРАТЬ</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <button type="button" id="fake"></button>
+        </div>
+        <div class="row">
+            <div class="col">
+                <img src="{% static 'FOOD/alyo_dflt_milk.jpeg' %}" class="img-fluid" alt="Picture 3">
+                <p>Шоколад молочный 97₽</p>
+                <div class="row">
+                    <div class="col">
+                        <button onclick="Bella()" class="btn btn-primary choco-btn" id="alnk" data-choco="alnk" data-price="97" type="button">КУПИТЬ</button>
+                    </div>
+                    <div class="col">
+                        <button onclick="NeBella()" class="btn btn-primary choco-btn" id="noalnk" data-choco="noalnk" data-price="-97" type="button">УБРАТЬ</button>
+                    </div>
+                </div>  
+            </div>
+            <div class="col">
+                <img src="{% static 'FOOD/milk_choc_almond.png' %}" class="img-fluid" alt="Picture 3">
+                <p>Шоколад с миндалем  103₽</p>
+                <div class="row">
+                    <div class="col">
+                        <button onclick="Vanil()" class="btn btn-primary choco-btn" id="almnd" data-choco="almnd" data-price="103" type="button">КУПИТЬ</button>
+                    </div>
+                    <div class="col">
+                        <button onclick="NeVanil()" class="btn btn-primary choco-btn" id="noalmnd" data-choco="noalmnd" data-price="-103" type="button">УБРАТЬ</button>
+                    </div>
+                </div>  
+            </div>
+        </div>
+        <div class="row">
+            <button type="button" id="fake"></button>
+        </div>
+        <div class="row">
+            <div class="col">
+                <img src="{% static 'FOOD/strab_choc.png' %}" class="img-fluid" alt="Picture 4">
+                <p>Шоколад с клубничным вкусом  108₽</p>
+                <div class="row">
+                    <div class="col">
+                        <button onclick="Cream()" class="btn btn-primary choco-btn" id="strchoc" data-choco="strchoc" data-price="108" type="button">КУПИТЬ</button>
+                    </div>
+                    <div class="col">
+                        <button onclick="NeCream()" class="btn btn-primary choco-btn" id="nostrchoc" data-choco="nostrchoc" data-price="-108" type="button">УБРАТЬ</button>
+                    </div>
+                </div>  
+            </div>
+            <div class="col">
+                <img src="{% static 'FOOD/milka_nuts.png' %}" class="img-fluid" alt="Picture 4">
+                <p>Шоколад с фундуком  105₽</p>
+                <div class="row">
+                    <div class="col">
+                        <button onclick="Yubu()" class="btn btn-primary choco-btn" id="mnuts" data-choco="mnuts" data-price="105" type="button">КУПИТЬ</button>
+                    </div>
+                    <div class="col">
+                        <button onclick="NeYubu()" class="btn btn-primary choco-btn" id="nomnuts" data-choco="nomnuts" data-price="-105" type="button">УБРАТЬ</button>
+                    </div>
+                </div>  
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p id="persona"><strong>ВЫ ПОТРАТИЛИ <span id="wallet">0</span>₽ НА ПОКУПКУ ШОКОЛАДА </strong></p>
+            </div>
+        </div>
+    </div>
+
+    
+    <button class="btn btn-primary next-btn" id="nxt" onclick="Koshel()" onclick="doTimeStuff()" >ДАЛЕЕ</button>
+    <input type="hidden" name="choco_wallet" id="choco_wallet" />
+    <input type="hidden" name="choco_time" id="choco_time" />
+    <input type="hidden" name="russia" id="russia" />
+    <input type="hidden" name="nerussia" id="nerussia" />
+    <input type="hidden" name="arahis" id="arahis" />
+    <input type="hidden" name="nearahis" id="nearahis" />
+    <input type="hidden" name="slivki" id="slivki" />
+    <input type="hidden" name="neslivki" id="neslivki" />
+    <input type="hidden" name="klubnika" id="klubnika" />
+    <input type="hidden" name="neklubnika" id="neklubnika" />
+    <input type="hidden" name="alena" id="alena" />
+    <input type="hidden" name="nealena" id="nealena" />
+    <input type="hidden" name="mindal" id="mindal" />
+    <input type="hidden" name="nemindal" id="nemindal" />
+    <input type="hidden" name="yagody" id="yagody" />
+    <input type="hidden" name="neyagody" id="neyagody" />
+    <input type="hidden" name="orehi" id="orehi" />
+    <input type="hidden" name="neorehi" id="neorehi" />
+
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        var pageTimeElapsed = 0;
+        var pageTimerID = -1;
+
+        window.onload = function() { 
+            if(pageTimerID == -1){
+              pageTimerID = setInterval(pageTick, 1000);
+            } 
+        };
+        var wallet = 0;
+        document.getElementById('russia').value = 0;
+        document.getElementById('nerussia').value = 0;
+        document.getElementById('arahis').value = 0;
+        document.getElementById('nearahis').value = 0;
+        document.getElementById('slivki').value = 0;
+        document.getElementById('neslivki').value = 0;
+        document.getElementById('klubnika').value = 0;
+        document.getElementById('neklubnika').value = 0;
+        document.getElementById('alena').value = 0;
+        document.getElementById('nealena').value = 0;
+        document.getElementById('mindal').value = 0;
+        document.getElementById('nemindal').value = 0;
+        document.getElementById('yagody').value = 0;
+        document.getElementById('neyagody').value = 0;
+        document.getElementById('orehi').value = 0;
+        document.getElementById('neorehi').value = 0;
+        $(document).ready(function() {
+            
+
+            $('.choco-btn').click(function() {
+                var choco = $(this).data('choco');
+                var price = $(this).data('price');
+                wallet += price;
+                $('#wallet').text(wallet);
+                return wallet;
+                //function submitValue() {
+                    //localStorage.setItem('myValue', wallet);
+                    // Redirect to the second page
+                    //window.location.href = 'Crisps.html';
+                //}
+            });
+
+            
+            const gener = document.querySelector('#gener');
+            gener.addEventListener('click', function onClick() {
+            gener.style.backgroundColor = 'green';
+            gener.style.color = 'white';
+            this.disabled = true;
+            });
+            const nogener = document.querySelector('#nogener');
+            nogener.addEventListener('click', function onClick() {
+            nogener.style.backgroundColor = 'salmon';
+            nogener.style.color = 'white';
+            this.disabled = true;
+            });
+            const black = document.querySelector('#black');
+            black.addEventListener('click', function onClick() {
+            black.style.backgroundColor = 'green';
+            black.style.color = 'white';
+            this.disabled = true;
+            });
+            const noblack = document.querySelector('#noblack');
+            noblack.addEventListener('click', function onClick() {
+            noblack.style.backgroundColor = 'salmon';
+            noblack.style.color = 'white';
+            this.disabled = true;
+            });
+            const cream = document.querySelector('#cream');
+            cream.addEventListener('click', function onClick() {
+            cream.style.backgroundColor = 'green';
+            cream.style.color = 'white';
+            this.disabled = true;
+            });
+            const nocream = document.querySelector('#nocream');
+            nocream.addEventListener('click', function onClick() {
+            nocream.style.backgroundColor = 'salmon';
+            nocream.style.color = 'white';
+            this.disabled = true;
+            });
+            const strawb = document.querySelector('#strawb');
+            strawb.addEventListener('click', function onClick() {
+            strawb.style.backgroundColor = 'green';
+            strawb.style.color = 'white';
+            this.disabled = true;
+            });
+            const nostrawb = document.querySelector('#nostrawb');
+            nostrawb.addEventListener('click', function onClick() {
+            nostrawb.style.backgroundColor = 'salmon';
+            nostrawb.style.color = 'white';
+            this.disabled = true;
+            });
+            const alnk = document.querySelector('#alnk');
+            alnk.addEventListener('click', function onClick() {
+            alnk.style.backgroundColor = 'green';
+            alnk.style.color = 'white';
+            this.disabled = true;
+            });
+            const noalnk = document.querySelector('#noalnk');
+            noalnk.addEventListener('click', function onClick() {
+            noalnk.style.backgroundColor = 'salmon';
+            noalnk.style.color = 'white';
+            this.disabled = true;
+            });
+            const almnd = document.querySelector('#almnd');
+            almnd.addEventListener('click', function onClick() {
+            almnd.style.backgroundColor = 'green';
+            almnd.style.color = 'white';
+            this.disabled = true;
+            });
+            const noalmnd = document.querySelector('#noalmnd');
+            noalmnd.addEventListener('click', function onClick() {
+            noalmnd.style.backgroundColor = 'salmon';
+            noalmnd.style.color = 'white';
+            this.disabled = true;
+            });
+            const strchoc = document.querySelector('#strchoc');
+            strchoc.addEventListener('click', function onClick() {
+            strchoc.style.backgroundColor = 'green';
+            strchoc.style.color = 'white';
+            this.disabled = true;
+            });
+            const nostrchoc = document.querySelector('#nostrchoc');
+            nostrchoc.addEventListener('click', function onClick() {
+            nostrchoc.style.backgroundColor = 'salmon';
+            nostrchoc.style.color = 'white';
+            this.disabled = true;
+            });
+            const mnuts = document.querySelector('#mnuts');
+            mnuts.addEventListener('click', function onClick() {
+            mnuts.style.backgroundColor = 'green';
+            mnuts.style.color = 'white';
+            this.disabled = true;
+            });
+            const nomnuts = document.querySelector('#nomnuts');
+            nomnuts.addEventListener('click', function onClick() {
+            nomnuts.style.backgroundColor = 'salmon';
+            nomnuts.style.color = 'white';
+            this.disabled = true;
+            });
+            
+
+
+
+
+
+        });    
+        function pageTick() {
+            pageTimeElapsed++
+            document.getElementById("choco_time").value = pageTimeElapsed;
+        }
+        
+        function Koshel(){
+            document.getElementById('choco_wallet').value = wallet;
+        }
+        function Lemon(){
+            document.getElementById('russia').value = 1;
+        }
+        function NeLemon(){
+            document.getElementById('russia').value = 1;
+        }
+        function Milk(){
+            document.getElementById('arahis').value = 1;
+        }
+        function NeMilk(){
+            document.getElementById('nearahis').value = 1;
+        }
+        function Shokol(){
+            document.getElementById('slivki').value = 1;
+        }
+        function NeShokol(){
+            document.getElementById('neslivki').value = 1;
+        }
+        function Ore(){
+            document.getElementById('klubnika').value = 1;
+        }
+        function NeOre(){
+            document.getElementById('neklubnika').value = 1;
+        }
+        function Bella(){
+            document.getElementById('alena').value = 1;
+        }
+        function NeBella(){
+            document.getElementById('nealena').value = 1;
+        }
+        function Cream(){
+            document.getElementById('yagody').value = 1;
+        }
+        function NeCream(){
+            document.getElementById('neyagody').value = 1;
+        }
+        function Vanil(){
+            document.getElementById('mindal').value = 1;
+        }
+        function NeVanil(){
+            document.getElementById('nemindal').value = 1;
+        }
+        function Yubu(){
+            document.getElementById('orehi').value = 1;
+        }
+        function NeYubu(){
+            document.getElementById('orehi').value = 1;
+        }
+
+
+        //document.getElementById('wallet') = function () {
+            //sessionStorage.setItem('my-input_save', wallet);
+            //}
+        
+        
+    </script>
+{% endblock %}

@@ -1,0 +1,110 @@
+{% block title %}
+    А теперь небольшое упражнение! Пожалуйста, найдите X. 
+{% endblock %}
+
+{% block content %} 
+{{ formfield_errors 'zad_time' }}
+<style>
+    .astext {
+        background:none;
+        border:none;
+        margin:0;
+        padding:0;
+        cursor: pointer;
+    }
+    #fakebox {
+        display: block;
+        width: 100%;
+        height: 100%;
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        
+        color: #212529;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border-radius: .25rem;
+        transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+        max-width: 400px;
+        max-height: 100px;
+    }
+    * {
+        box-sizing: border-box;
+    }
+    #fake {
+        width: 400px;
+        height: 40px;
+        color: #212529;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: .25rem;
+
+    }
+    #dalee{
+        margin-top: 5px;
+    }
+    #podskaz {
+        width: 75px;
+        height: 20px;
+        color: #1d9863;
+        background-color: #e7f2f5;
+        position:absolute; 
+        top:600px; 
+        right: 100px;
+    }
+</style>
+
+
+<p>
+    
+        185 + 3X = 18X - 10     
+</p>
+    
+    
+    
+    <button class="astext" onclick="doTimeStuff()"> <strong> X</strong> = </button>
+    <input type="hidden" name="zad_time" id="zad_time" />
+    
+    
+    <button type="button" id="fake"></button>
+
+    <div class="row">
+        <div class="col">
+            <button type="button" class="btn btn-primary next-btn" id="dalee">ДАЛЕЕ</button>
+        </div>
+    </div>
+    <p id="otvet">
+          
+    </p>
+    <button type="button" id="podskaz">подсказка</button>
+    
+   
+<script>
+    var pageTimeElapsed = 0;
+    var pageTimerID = -1;
+
+    window.onload = function() { 
+            if(pageTimerID == -1){
+              pageTimerID = setInterval(pageTick, 1000);
+            } 
+        };
+
+    function pageTick() {
+        pageTimeElapsed++
+        document.getElementById("zad_time").value = pageTimeElapsed;
+    }
+    const MyButton = document.getElementById('podskaz');
+    //Add on click listener for button
+    MyButton.addEventListener('click', function() {
+        //Select (h1) heading by id, and then change it's value to (bananas)
+        document.getElementById('otvet').innerText = "Перейчитайте внимательно задание. Глагол может иметь 2 смысла"
+    })
+</script>
+    
+ 
+{% endblock %}

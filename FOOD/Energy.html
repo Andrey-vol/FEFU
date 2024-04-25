@@ -1,0 +1,407 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    МАГАЗИН: ЭНЕРГЕТИЧЕСКИЕ НАПИТКИ
+{% endblock %}
+
+
+{% block content %}
+    {{ formfield_errors 'nrg_time' }}
+    {{ formfield_errors 'nrg_wallet' }}
+    {{ formfield_errors 'red' }}
+    {{ formfield_errors 'nered' }}
+    {{ formfield_errors 'monstr' }}
+    {{ formfield_errors 'nemonstr' }}
+    {{ formfield_errors 'gns' }}
+    {{ formfield_errors 'negns' }}
+    {{ formfield_errors 'flas' }}
+    {{ formfield_errors 'neflas' }}
+    {{ formfield_errors 'pinkl' }}
+    {{ formfield_errors 'nepinkl' }}
+    {{ formfield_errors 'adrnl' }}
+    {{ formfield_errors 'neadrnl' }}
+    {{ formfield_errors 'sky' }}
+    {{ formfield_errors 'nesky' }}
+    {{ formfield_errors 'grpom' }}
+    {{ formfield_errors 'negrpom' }}
+    <style>
+        .img-fluid {
+            width:  300px;
+            height: 300px;
+            background-size: cover;
+        }
+        
+        #persona { 
+            color: rgb(35, 16, 52); 
+            font-size: 18px; 
+            margin-top: 10px;
+        } 
+        #fake {
+            height: 8px;
+            color: #212529;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: .25rem;
+            margin-top: 10px;
+            margin-bottom: 3px;
+    
+        }
+    </style>
+    <div class="container">
+        
+        <div class="row">
+            <div class="col">
+                <img src="{% static 'FOOD/red_bull.png' %}" class="img-fluid" alt="Picture 1">
+                <p>Энергетический напиток оригинальный  139₽</p>
+                <div class="row">
+                    <div class="col">
+                        <button onclick="Lemon()" class="btn btn-primary nrg-btn" id="bull" data-nrg="bull" data-price="100" type="button">КУПИТЬ</button>
+                    </div>
+                    <div class="col">
+                        <button onclick="NeLemon()" class="btn btn-primary nrg-btn" id="nobull" data-nrg="nobull" data-price="-100" type="button">УБРАТЬ</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <img src="{% static 'FOOD/monster.jpg' %}" class="img-fluid" alt="Picture 1">
+                <p>Энергетический напиток оригинальный  134₽</p>
+                <div class="row">
+                    <div class="col">
+                        <button onclick="Milk()" class="btn btn-primary nrg-btn" id="orig" data-nrg="orig" data-price="100" type="button">КУПИТЬ</button>
+                    </div>
+                    <div class="col">
+                        <button onclick="NeMilk()" class="btn btn-primary nrg-btn" id="noorig" data-nrg="noorig" data-price="-100" type="button">УБРАТЬ</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <button type="button" id="fake"></button>
+        </div>
+        <div class="row">
+            <div class="col">
+                <img src="{% static 'FOOD/pink_lemonad_enrg.png' %}" class="img-fluid" alt="Picture 2">
+                <p>Энергетический напиток со вкусом розового лимонада  118₽</p>
+                <div class="row">
+                    <div class="col">
+                        <button onclick="Bella()" class="btn btn-primary nrg-btn" id="pink" data-nrg="pink" data-price="100" type="button">КУПИТЬ</button>
+                    </div>
+                    <div class="col">
+                        <button onclick="NeBella()" class="btn btn-primary nrg-btn" id="nopink" data-nrg="nopink" data-price="-100" type="button">УБРАТЬ</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <img src="{% static 'FOOD/genesis.png' %}" class="img-fluid" alt="Picture 2">
+                <p>Энергетический напиток со вкусом "киви-яблоко" 105₽</p>
+                <div class="row">
+                    <div class="col">
+                        <button onclick="Shokol()" class="btn btn-primary nrg-btn" id="gnsis" data-nrg="gnsis" data-price="100" type="button">КУПИТЬ</button>
+                    </div>
+                    <div class="col">
+                        <button onclick="NeShokol()" class="btn btn-primary nrg-btn" id="nognsis" data-nrg="nognsis" data-price="-100" type="button">УБРАТЬ</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <button type="button" id="fake"></button>
+        </div>
+        <div class="row">
+            <div class="col">
+                <img src="{% static 'FOOD/flash.png' %}" class="img-fluid" alt="Picture 3">
+                <p>Энергетический напиток оригинальный 84₽</p>
+                <div class="row">
+                    <div class="col">
+                        <button onclick="Ore()" class="btn btn-primary nrg-btn" id="flash" data-nrg="flash" data-price="100" type="button">КУПИТЬ</button>
+                    </div>
+                    <div class="col">
+                        <button onclick="NeOre()" class="btn btn-primary nrg-btn" id="noflash" data-nrg="noflash" data-price="-100" type="button">УБРАТЬ</button>
+                    </div>
+                </div>  
+            </div>
+            <div class="col">
+                <img src="{% static 'FOOD/skai_orig.png' %}" class="img-fluid" alt="Picture 3">
+                <p>Энергетический напиток оригинальный  134₽</p>
+                <div class="row">
+                    <div class="col">
+                        <button onclick="Cream()" class="btn btn-primary nrg-btn" id="skai" data-nrg="skai" data-price="100" type="button">КУПИТЬ</button>
+                    </div>
+                    <div class="col">
+                        <button onclick="NeCream()" class="btn btn-primary nrg-btn" id="noskai" data-nrg="noskai" data-price="-100" type="button">УБРАТЬ</button>
+                    </div>
+                </div>  
+            </div>
+        </div>
+        <div class="row">
+            <button type="button" id="fake"></button>
+        </div>
+        <div class="row">
+            <div class="col">
+                <img src="{% static 'FOOD/nrg_grape_pomgran.png' %}" class="img-fluid" alt="Picture 4">
+                <p>Энергетический напиток со вкусом "виноград-гранат"  121₽</p>
+                <div class="row">
+                    <div class="col">
+                        <button onclick="Yubu()" class="btn btn-primary nrg-btn" id="grape" data-nrg="grape" data-price="100" type="button">КУПИТЬ</button>
+                    </div>
+                    <div class="col">
+                        <button onclick="NeYubu()" class="btn btn-primary nrg-btn" id="nogrape" data-nrg="nogrape" data-price="-100" type="button">УБРАТЬ</button>
+                    </div>
+                </div>  
+            </div>
+            <div class="col">
+                <img src="{% static 'FOOD/a_rush_zero.png' %}" class="img-fluid" alt="Picture 4">
+                <p>Энергетический напиток без сахара  126₽</p>
+                <div class="row">
+                    <div class="col">
+                        <button onclick="Vanil()" class="btn btn-primary nrg-btn" id="rush" data-nrg="rush" data-price="100" type="button">КУПИТЬ</button>
+                    </div>
+                    <div class="col">
+                        <button onclick="NeVanil()" class="btn btn-primary nrg-btn" id="norush" data-nrg="norush" data-price="-100" type="button">УБРАТЬ</button>
+                    </div>
+                </div>  
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p id="persona"><strong>ВЫ ПОТРАТИЛИ <span id="wallet">0</span>₽ НА ПОКУПКУ ЭНЕРГЕТИЧЕСКИХ НАПИТКОВ </strong></p>
+            </div>
+        </div>
+    </div>
+
+    
+    <button class="btn btn-primary next-btn" id="nxt" onclick="Koshel()" onclick="doTimeStuff()" >ДАЛЕЕ</button>
+    <input type="hidden" name="nrg_wallet" id="nrg_wallet" />
+    <input type="hidden" name="nrg_time" id="nrg_time" />
+    <input type="hidden" name="red" id="red" />
+    <input type="hidden" name="nered" id="nered" />
+    <input type="hidden" name="monstr" id="monstr" />
+    <input type="hidden" name="nemonstr" id="nemonstr" />
+    <input type="hidden" name="gns" id="gns" />
+    <input type="hidden" name="negns" id="negns" />
+    <input type="hidden" name="flas" id="flas" />
+    <input type="hidden" name="neflas" id="neflas" />
+    <input type="hidden" name="pinkl" id="pinkl" />
+    <input type="hidden" name="nepinkl" id="nepinkl" />
+    <input type="hidden" name="adrnl" id="adrnl" />
+    <input type="hidden" name="neadrnl" id="neadrnl" />
+    <input type="hidden" name="sky" id="sky" />
+    <input type="hidden" name="nesky" id="nesky" />
+    <input type="hidden" name="grpom" id="grpom" />
+    <input type="hidden" name="negrpom" id="negrpom" />
+
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        var pageTimeElapsed = 0;
+        var pageTimerID = -1;
+
+        window.onload = function() { 
+            if(pageTimerID == -1){
+              pageTimerID = setInterval(pageTick, 1000);
+            } 
+        };
+        var wallet = 0;
+        document.getElementById('red').value = 0;
+        document.getElementById('nered').value = 0;
+        document.getElementById('monstr').value = 0;
+        document.getElementById('nemonstr').value = 0;
+        document.getElementById('gns').value = 0;
+        document.getElementById('negns').value = 0;
+        document.getElementById('flas').value = 0;
+        document.getElementById('neflas').value = 0;
+        document.getElementById('pinkl').value = 0;
+        document.getElementById('nepinkl').value = 0;
+        document.getElementById('adrnl').value = 0;
+        document.getElementById('neadrnl').value = 0;
+        document.getElementById('sky').value = 0;
+        document.getElementById('nesky').value = 0;
+        document.getElementById('grpom').value = 0;
+        document.getElementById('negrpom').value = 0;
+        $(document).ready(function() {
+            
+
+            $('.nrg-btn').click(function() {
+                var nrg = $(this).data('nrg');
+                var price = $(this).data('price');
+                wallet += price;
+                $('#wallet').text(wallet);
+                return wallet;
+                //function submitValue() {
+                    //localStorage.setItem('myValue', wallet);
+                    // Redirect to the second page
+                    //window.location.href = 'Crisps.html';
+                //}
+            });
+
+            
+            const bull = document.querySelector('#bull');
+            bull.addEventListener('click', function onClick() {
+            bull.style.backgroundColor = 'green';
+            bull.style.color = 'white';
+            this.disabled = true;
+            });
+            const nobull = document.querySelector('#nobull');
+            nobull.addEventListener('click', function onClick() {
+            nobull.style.backgroundColor = 'salmon';
+            nobull.style.color = 'white';
+            this.disabled = true;
+            });
+            const orig = document.querySelector('#orig');
+            orig.addEventListener('click', function onClick() {
+            orig.style.backgroundColor = 'green';
+            orig.style.color = 'white';
+            this.disabled = true;
+            });
+            const noorig = document.querySelector('#noorig');
+            noorig.addEventListener('click', function onClick() {
+            noorig.style.backgroundColor = 'salmon';
+            noorig.style.color = 'white';
+            this.disabled = true;
+            });
+            const pink = document.querySelector('#pink');
+            pink.addEventListener('click', function onClick() {
+            pink.style.backgroundColor = 'green';
+            pink.style.color = 'white';
+            this.disabled = true;
+            });
+            const nopink = document.querySelector('#nopink');
+            nopink.addEventListener('click', function onClick() {
+            nopink.style.backgroundColor = 'salmon';
+            nopink.style.color = 'white';
+            this.disabled = true;
+            });
+            const gnsis = document.querySelector('#gnsis');
+            gnsis.addEventListener('click', function onClick() {
+            gnsis.style.backgroundColor = 'green';
+            gnsis.style.color = 'white';
+            this.disabled = true;
+            });
+            const nognsis = document.querySelector('#nognsis');
+            nognsis.addEventListener('click', function onClick() {
+            nognsis.style.backgroundColor = 'salmon';
+            nognsis.style.color = 'white';
+            this.disabled = true;
+            });
+            const flash = document.querySelector('#flash');
+            flash.addEventListener('click', function onClick() {
+            flash.style.backgroundColor = 'green';
+            flash.style.color = 'white';
+            this.disabled = true;
+            });
+            const noflash = document.querySelector('#noflash');
+            noflash.addEventListener('click', function onClick() {
+            noflash.style.backgroundColor = 'salmon';
+            noflash.style.color = 'white';
+            this.disabled = true;
+            });
+            const skai = document.querySelector('#skai');
+            skai.addEventListener('click', function onClick() {
+            skai.style.backgroundColor = 'green';
+            skai.style.color = 'white';
+            this.disabled = true;
+            });
+            const noskai = document.querySelector('#noskai');
+            noskai.addEventListener('click', function onClick() {
+            noskai.style.backgroundColor = 'salmon';
+            noskai.style.color = 'white';
+            this.disabled = true;
+            });
+            const grape = document.querySelector('#grape');
+            grape.addEventListener('click', function onClick() {
+            grape.style.backgroundColor = 'green';
+            grape.style.color = 'white';
+            this.disabled = true;
+            });
+            const nogrape = document.querySelector('#nogrape');
+            nogrape.addEventListener('click', function onClick() {
+            nogrape.style.backgroundColor = 'salmon';
+            nogrape.style.color = 'white';
+            this.disabled = true;
+            });
+            const rush = document.querySelector('#rush');
+            rush.addEventListener('click', function onClick() {
+            rush.style.backgroundColor = 'green';
+            rush.style.color = 'white';
+            this.disabled = true;
+            });
+            const norush = document.querySelector('#norush');
+            norush.addEventListener('click', function onClick() {
+            norush.style.backgroundColor = 'salmon';
+            norush.style.color = 'white';
+            this.disabled = true;
+            });
+            
+
+
+
+
+
+        });    
+        function pageTick() {
+            pageTimeElapsed++
+            document.getElementById("nrg_time").value = pageTimeElapsed;
+        }
+        function Koshel(){
+            document.getElementById('nrg_wallet').value = wallet;
+        } 
+        function Lemon(){
+            document.getElementById('red').value = 1;
+        }
+        function NeLemon(){
+            document.getElementById('red').value = 1;
+        }
+        function Milk(){
+            document.getElementById('monstr').value = 1;
+        }
+        function NeMilk(){
+            document.getElementById('nemonstr').value = 1;
+        }
+        function Shokol(){
+            document.getElementById('gns').value = 1;
+        }
+        function NeShokol(){
+            document.getElementById('negns').value = 1;
+        }
+        function Ore(){
+            document.getElementById('flas').value = 1;
+        }
+        function NeOre(){
+            document.getElementById('neflas').value = 1;
+        }
+        function Bella(){
+            document.getElementById('pinkl').value = 1;
+        }
+        function NeBella(){
+            document.getElementById('nepinkl').value = 1;
+        }
+        function Cream(){
+            document.getElementById('sky').value = 1;
+        }
+        function NeCream(){
+            document.getElementById('nesky').value = 1;
+        }
+        function Vanil(){
+            document.getElementById('adrnl').value = 1;
+        }
+        function NeVanil(){
+            document.getElementById('neadrnl').value = 1;
+        }
+        function Yubu(){
+            document.getElementById('grpom').value = 1;
+        }
+        function NeYubu(){
+            document.getElementById('negrpom').value = 1;
+        }
+
+
+        //document.getElementById('wallet') = function () {
+            //sessionStorage.setItem('my-input_save', wallet);
+            //}
+        
+        
+    </script>
+{% endblock %}

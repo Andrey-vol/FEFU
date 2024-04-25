@@ -1,0 +1,96 @@
+{% block title %}
+    Для перехода на следующую страницу нажмите на кнопку 
+{% endblock %}
+{% block content %} 
+{{ formfield_errors 'next_time' }}
+<style>
+    #fake {
+        width: 400px;
+        height: 40px;
+        color: #212529;
+        background-color: #fff;
+        position:absolute; 
+        top:20px; 
+        right: 100px;
+    }
+    #dalee {
+            width: 200px;
+            height: 20px;
+            color: #a88d21;
+            background-color: #8a1551;
+            position:absolute; 
+            top: 300px; 
+            left: 90px;
+    }
+    #again {
+        width: 40px;
+        height: 40px;
+        color: #0cbc58;
+        background-color: #94e217;
+        position:absolute; 
+        top: 25px; 
+        left: -150px;
+    }
+    #nea {
+        width: 500px;
+        height: 500px;
+        color: #06cd9b;
+        background-color: #e22121;
+        position:absolute; 
+        bottom:200px; 
+        right: 200px;
+    }
+    #pge {
+        width: 300px;
+        height: 300px;
+        color: #06cd9b;
+        background-color: #065f1a;
+        position:absolute; 
+        top:500px; 
+        left: 200px;
+    }
+    #right {
+        width: 20px;
+        height: 20px;
+        color: #adb305;
+        background-color: #adb305;
+        position:absolute; 
+        top:50px; 
+        left: 130px;
+    }
+    #nxt{
+        position:absolute; 
+        top: 250px; 
+        right: 25px;
+    }
+</style>
+<p>
+
+    Перейдите на следующую страницу
+</p>
+
+<button type="button" id="dalee">далее</button>
+<button type="button" id="fake">ПЕРЕЙТИ</button>
+<button type="button" id="nea">ПРОДОЛЖИТЬ</button>
+<button type="button" id="again">NEXT PAGE</button>
+<button type="button" id="pge">К следующей странице</button>
+<button type="button" class="btn btn-primary next-btn" id="nxt">ДАЛЕЕ</button>
+<button  id="right"></button>
+<input type="hidden" name="next_time" id="next_time" />
+
+<script>
+    var pageTimeElapsed = 0;
+    var pageTimerID = -1;
+
+    window.onload = function() { 
+            if(pageTimerID == -1){
+              pageTimerID = setInterval(pageTick, 1000);
+            } 
+        };
+
+    function pageTick() {
+        pageTimeElapsed++
+        document.getElementById("next_time").value = pageTimeElapsed;
+    }
+</script>
+{% endblock %}

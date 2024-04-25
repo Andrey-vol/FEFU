@@ -1,0 +1,412 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    МАГАЗИН: ПЕЧЕНЬЕ
+{% endblock %}
+
+
+{% block content %}
+    {{ formfield_errors 'cook_time' }}
+    {{ formfield_errors 'cook_wallet' }}
+    {{ formfield_errors 'lemon' }}
+    {{ formfield_errors 'nelemon' }}
+    {{ formfield_errors 'milky' }}
+    {{ formfield_errors 'nemilky' }}
+    {{ formfield_errors 'shoko' }}
+    {{ formfield_errors 'neshoko' }}
+    {{ formfield_errors 'oreyro' }}
+    {{ formfield_errors 'neoreyro' }}
+    {{ formfield_errors 'belvi' }}
+    {{ formfield_errors 'nebelvi' }}
+    {{ formfield_errors 'vanila' }}
+    {{ formfield_errors 'nevanila' }}
+    {{ formfield_errors 'moloko' }}
+    {{ formfield_errors 'nemoloko' }}
+    {{ formfield_errors 'yubiley' }}
+    {{ formfield_errors 'neyubiley' }}
+    <style>
+        .img-fluid {
+            width:  300px;
+            height: 300px;
+            background-size: cover;
+        }
+        
+        #persona { 
+            color: rgb(35, 16, 52); 
+            font-size: 18px; 
+            margin-top: 10px;
+        } 
+        #fake {
+            height: 8px;
+            color: #212529;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: .25rem;
+            margin-top: 10px;
+            margin-bottom: 3px;
+    
+        }
+    </style>
+    <div class="container">
+        
+        <div class="row">
+            <div class="col">
+                <img src="{% static 'FOOD/milka_cookie.png' %}" class="img-fluid" alt="Picture 1">
+                <p>Печенье с шоколадом  139₽</p>
+                <div class="row">
+                    <div class="col">
+                        <button onclick="Milk()" class="btn btn-primary fruit-btn" id="milka" data-fruit="milka" data-price="139" type="button">КУПИТЬ</button>
+                    </div>
+                    <div class="col">
+                        <button onclick="NeMilk()" class="btn btn-primary fruit-btn" id="nomilka" data-fruit="nomilka" data-price="-139" type="button">УБРАТЬ</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <img src="{% static 'FOOD/jap_cookie.png' %}" class="img-fluid" alt="Picture 1">
+                <p>Печенье лимонное  131₽</p>
+                <div class="row">
+                    <div class="col">
+                        <button onclick="Lemon()" class="btn btn-primary fruit-btn" id="lem" data-fruit="lemon" data-price="131" type="button">КУПИТЬ</button>
+                    </div>
+                    <div class="col">
+                        <button onclick="NeLemon()" class="btn btn-primary fruit-btn" id="nolem" data-fruit="nolemon" data-price="-131" type="button">УБРАТЬ</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <button type="button" id="fake"></button>
+        </div>
+        <div class="row">
+            <div class="col">
+                <img src="{% static 'FOOD/ovsyanoe.png' %}" class="img-fluid" alt="Picture 2">
+                <p>Печенье овсяное с шоколадной крошкой  122₽</p>
+                <div class="row">
+                    <div class="col">
+                        <button onclick="Shokol()" class="btn btn-primary fruit-btn" id="choco" data-fruit="choco" data-price="122" type="button">КУПИТЬ</button>
+                    </div>
+                    <div class="col">
+                        <button onclick="NeShokol()" class="btn btn-primary fruit-btn" id="nochoco" data-fruit="nochoco" data-price="-122" type="button">УБРАТЬ</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <img src="{% static 'FOOD/oreo.jpg' %}" class="img-fluid" alt="Picture 2">
+                <p>Печенье шоколадное с начинкой  138₽</p>
+                <div class="row">
+                    <div class="col">
+                        <button onclick="Ore()" class="btn btn-primary fruit-btn" id="oreo" data-fruit="oreo" data-price="138" type="button">КУПИТЬ</button>
+                    </div>
+                    <div class="col">
+                        <button onclick="NeOre()" class="btn btn-primary fruit-btn" id="nooreo" data-fruit="nooreo" data-price="-138" type="button">УБРАТЬ</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <button type="button" id="fake"></button>
+        </div>
+        <div class="row">
+            <div class="col">
+                <img src="{% static 'FOOD/belvita.png' %}" class="img-fluid" alt="Picture 3">
+                <p>Печенье со сливочной начинкой  137₽</p>
+                <div class="row">
+                    <div class="col">
+                        <button onclick="Bella()" class="btn btn-primary fruit-btn" id="bel" data-fruit="bel" data-price="137" type="button">КУПИТЬ</button>
+                    </div>
+                    <div class="col">
+                        <button onclick="NeBella()" class="btn btn-primary fruit-btn" id="nobel" data-fruit="nobel" data-price="-137" type="button">УБРАТЬ</button>
+                    </div>
+                </div>  
+            </div>
+            <div class="col">
+                <img src="{% static 'FOOD/jap_cook_vanil.png' %}" class="img-fluid" alt="Picture 3">
+                <p>Печенье ванильное  143₽</p>
+                <div class="row">
+                    <div class="col">
+                        <button onclick="Vanil()" class="btn btn-primary fruit-btn" id="vanil" data-fruit="vanil" data-price="143" type="button">КУПИТЬ</button>
+                    </div>
+                    <div class="col">
+                        <button onclick="NeVanil()" class="btn btn-primary fruit-btn" id="novanil" data-fruit="novanil" data-price="-143" type="button">УБРАТЬ</button>
+                    </div>
+                </div>  
+            </div>
+        </div>
+        <div class="row">
+            <button type="button" id="fake"></button>
+        </div>
+        <div class="row">
+            <div class="col">
+                <img src="{% static 'FOOD/milk_cook.jpeg' %}" class="img-fluid" alt="Picture 4">
+                <p>Печенье с молочным вкусом  141₽</p>
+                <div class="row">
+                    <div class="col">
+                        <button onclick="Cream()" class="btn btn-primary fruit-btn" id="milk" data-fruit="milk" data-price="141" type="button">КУПИТЬ</button>
+                    </div>
+                    <div class="col">
+                        <button onclick="NeCream()" class="btn btn-primary fruit-btn" id="nomilk" data-fruit="nomilk" data-price="-141" type="button">УБРАТЬ</button>
+                    </div>
+                </div>  
+            </div>
+            <div class="col">
+                <img src="{% static 'FOOD/anniversar.png' %}" class="img-fluid" alt="Picture 4">
+                <p>Печенье молочное  122₽</p>
+                <div class="row">
+                    <div class="col">
+                        <button onclick="Yubu()" class="btn btn-primary fruit-btn" id="ann" data-fruit="ann" data-price="122" type="button">КУПИТЬ</button>
+                    </div>
+                    <div class="col">
+                        <button onclick="NeYubu()" class="btn btn-primary fruit-btn" id="noann" data-fruit="noann" data-price="-122" type="button">УБРАТЬ</button>
+                    </div>
+                </div>  
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p id="persona"><strong>ВЫ ПОТРАТИЛИ <span id="wallet">0</span>₽ НА ПОКУПКУ ПЕЧЕНЬЯ </strong></p>
+            </div>
+        </div>
+    </div>
+
+    
+    <button class="btn btn-primary next-btn" id="nxt" onclick="Koshel()" onclick="doTimeStuff()" >ДАЛЕЕ</button>
+
+    <input type="hidden" name="cook_wallet" id="cook_wallet" />
+    <input type="hidden" name="cook_time" id="cook_time" />
+    <input type="hidden" name="lemon" id="lemon" />
+    <input type="hidden" name="nelemon" id="nelemon" />
+    <input type="hidden" name="milky" id="milky" />
+    <input type="hidden" name="nemilky" id="nemilky" />
+    <input type="hidden" name="shoko" id="shoko" />
+    <input type="hidden" name="neshoko" id="neshoko" />
+    <input type="hidden" name="oreyro" id="oreyro" />
+    <input type="hidden" name="neoreyro" id="neoreyro" />
+    <input type="hidden" name="belvi" id="belvi" />
+    <input type="hidden" name="nebelvi" id="nebelvi" />
+    <input type="hidden" name="vanila" id="vanila" />
+    <input type="hidden" name="nevanila" id="nevanila" />
+    <input type="hidden" name="moloko" id="moloko" />
+    <input type="hidden" name="nemoloko" id="nemoloko" />
+    <input type="hidden" name="yubiley" id="yubiley" />
+    <input type="hidden" name="neyubiley" id="neyubiley" />
+
+
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        var pageTimeElapsed = 0;
+        var pageTimerID = -1;
+
+        window.onload = function() { 
+            if(pageTimerID == -1){
+              pageTimerID = setInterval(pageTick, 1000);
+            } 
+        };
+        var wallet = 0;
+        document.getElementById('lemon').value = 0;
+        document.getElementById('nelemon').value = 0;
+        document.getElementById('milky').value = 0;
+        document.getElementById('nemilky').value = 0;
+        document.getElementById('shoko').value = 0;
+        document.getElementById('neshoko').value = 0;
+        document.getElementById('oreyro').value = 0;
+        document.getElementById('neoreyro').value = 0;
+        document.getElementById('belvi').value = 0;
+        document.getElementById('nebelvi').value = 0;
+        document.getElementById('vanila').value = 0;
+        document.getElementById('nevanila').value = 0;
+        document.getElementById('moloko').value = 0;
+        document.getElementById('nemoloko').value = 0;
+        document.getElementById('yubiley').value = 0;
+        document.getElementById('neyubiley').value = 0;
+        $(document).ready(function() {
+            
+
+            $('.fruit-btn').click(function() {
+                var fruit = $(this).data('fruit');
+                var price = $(this).data('price');
+                wallet += price;
+                $('#wallet').text(wallet);
+                return wallet;
+                //function submitValue() {
+                    //localStorage.setItem('myValue', wallet);
+                    // Redirect to the second page
+                    //window.location.href = 'Crisps.html';
+                //}
+            });
+
+            
+            const btn = document.querySelector('#lem');
+            btn.addEventListener('click', function onClick() {
+            btn.style.backgroundColor = 'green';
+            btn.style.color = 'white';
+            this.disabled = true;
+            });
+            const btn_no_lem = document.querySelector('#nolem');
+            btn_no_lem.addEventListener('click', function onClick() {
+            btn_no_lem.style.backgroundColor = 'salmon';
+            btn_no_lem.style.color = 'white';
+            this.disabled = true;
+            });
+            const btn_1 = document.querySelector('#choco');
+            btn_1.addEventListener('click', function onClick() {
+            btn_1.style.backgroundColor = 'green';
+            btn_1.style.color = 'white';
+            this.disabled = true;
+            });
+            const nochoco = document.querySelector('#nochoco');
+            nochoco.addEventListener('click', function onClick() {
+            nochoco.style.backgroundColor = 'salmon';
+            nochoco.style.color = 'white';
+            this.disabled = true;
+            });
+            const milka = document.querySelector('#milka');
+            milka.addEventListener('click', function onClick() {
+            milka.style.backgroundColor = 'green';
+            milka.style.color = 'white';
+            this.disabled = true;
+            });
+            const nomilka = document.querySelector('#nomilka');
+            nomilka.addEventListener('click', function onClick() {
+            nomilka.style.backgroundColor = 'salmon';
+            nomilka.style.color = 'white';
+            this.disabled = true;
+            });
+            const oreo = document.querySelector('#oreo');
+            oreo.addEventListener('click', function onClick() {
+            oreo.style.backgroundColor = 'green';
+            oreo.style.color = 'white';
+            this.disabled = true;
+            });
+            const nooreo = document.querySelector('#nooreo');
+            nooreo.addEventListener('click', function onClick() {
+            nooreo.style.backgroundColor = 'salmon';
+            nooreo.style.color = 'white';
+            this.disabled = true;
+            });
+            const bel = document.querySelector('#bel');
+            bel.addEventListener('click', function onClick() {
+            bel.style.backgroundColor = 'green';
+            bel.style.color = 'white';
+            this.disabled = true;
+            });
+            const nobel = document.querySelector('#nobel');
+            nobel.addEventListener('click', function onClick() {
+            nobel.style.backgroundColor = 'salmon';
+            nobel.style.color = 'white';
+            this.disabled = true;
+            });
+            const ann = document.querySelector('#ann');
+            ann.addEventListener('click', function onClick() {
+            ann.style.backgroundColor = 'green';
+            ann.style.color = 'white';
+            this.disabled = true;
+            });
+            const noann = document.querySelector('#noann');
+            noann.addEventListener('click', function onClick() {
+            noann.style.backgroundColor = 'salmon';
+            noann.style.color = 'white';
+            this.disabled = true;
+            });
+            const vanil = document.querySelector('#vanil');
+            vanil.addEventListener('click', function onClick() {
+            vanil.style.backgroundColor = 'green';
+            vanil.style.color = 'white';
+            this.disabled = true;
+            });
+            const novanil = document.querySelector('#novanil');
+            novanil.addEventListener('click', function onClick() {
+            novanil.style.backgroundColor = 'salmon';
+            novanil.style.color = 'white';
+            this.disabled = true;
+            });
+            const milk = document.querySelector('#milk');
+            milk.addEventListener('click', function onClick() {
+            milk.style.backgroundColor = 'green';
+            milk.style.color = 'white';
+            this.disabled = true;
+            });
+            const nomilk = document.querySelector('#nomilk');
+            nomilk.addEventListener('click', function onClick() {
+            nomilk.style.backgroundColor = 'salmon';
+            nomilk.style.color = 'white';
+            this.disabled = true;
+            });
+            
+
+
+
+
+
+        });    
+        function pageTick() {
+            pageTimeElapsed++
+            document.getElementById("cook_time").value = pageTimeElapsed;
+            
+        }
+                
+        function Koshel(){
+            document.getElementById('cook_wallet').value = wallet;
+            //localStorage.setItem('myValue', wallet);
+        }
+        function Lemon(){
+            document.getElementById('lemon').value = 1;
+        }
+        function NeLemon(){
+            document.getElementById('lemon').value = 1;
+        }
+        function Milk(){
+            document.getElementById('milky').value = 1;
+        }
+        function NeMilk(){
+            document.getElementById('nemilky').value = 1;
+        }
+        function Shokol(){
+            document.getElementById('shoko').value = 1;
+        }
+        function NeShokol(){
+            document.getElementById('neshoko').value = 1;
+        }
+        function Ore(){
+            document.getElementById('oreyro').value = 1;
+        }
+        function NeOre(){
+            document.getElementById('neoreyro').value = 1;
+        }
+        function Bella(){
+            document.getElementById('belvi').value = 1;
+        }
+        function NeBella(){
+            document.getElementById('nebelvi').value = 1;
+        }
+        function Cream(){
+            document.getElementById('moloko').value = 1;
+        }
+        function NeCream(){
+            document.getElementById('nemoloko').value = 1;
+        }
+        function Vanil(){
+            document.getElementById('vanila').value = 1;
+        }
+        function NeVanil(){
+            document.getElementById('nevanila').value = 1;
+        }
+        function Yubu(){
+            document.getElementById('yubiley').value = 1;
+        }
+        function NeYubu(){
+            document.getElementById('neyubiley').value = 1;
+        }
+
+
+        //document.getElementById('wallet') = function () {
+            //sessionStorage.setItem('my-input_save', wallet);
+            //yubiley vanila moloko
+        
+        
+    </script>
+{% endblock %}

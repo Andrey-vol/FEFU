@@ -1,0 +1,25 @@
+{{ block title }}
+    НЕБОЛЬШОЙ ОТЗЫВ
+{{ endblock }}
+{{ block content }}
+
+
+    {{ formfield 'gender' }}
+    {{ formfield 'age' }}
+    {{ formfield 'receipt' }}
+    {{ formfield 'wage' }}
+    {{ formfield 'education' }}
+    <p>
+        Насколько Вы удовлетворены тем набором продуктов питания, который потребляете ежедневно?
+    </p>
+    <p>
+        Полностью неудовлетворен(-на) &nbsp;
+        {{ for choice in form.satisf }}
+            {{ choice }}
+        {{ endfor }}
+        &nbsp; Полностью удовлетворен(-на)
+    </p>
+
+    {{ formfield 'phone' }}
+<button class="btn btn-primary next-btn" id="nxt" >ДАЛЕЕ</button>
+{{ endblock }}

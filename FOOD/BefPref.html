@@ -1,0 +1,58 @@
+{{ block title }}
+    НЕБОЛЬШОЙ ОТЗЫВ
+{{ endblock }}
+{{ block content }}
+
+    <style>
+        .mgslider-wrapper {
+            border-spacing: 10px;
+        }
+        .mgslider-limit {
+            width: 10%;
+            min-width: 75px;
+            height: 40px;
+            margin: 100px;
+            text-align: center;
+            background: #eee;
+            border: 1px solid #888;
+        }
+        .mgslider-limit, .mgslider-value {
+            font-variant-numeric: tabular-nums;
+        }
+        .mgslider-before {
+            height: 16px;
+            width: 100%;
+            background: #1e5bff;
+        }
+        .mgslider-feedback {
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+    </style>
+
+    {{ formfield_errors 'bef_pref' }}
+    
+    <p>Оцените, пожалуйста, какой процент из выбранных Вами товаров Вы ранее уже пробовали. 
+        Для того, чтобы потянуть бегунок, нажмите на синюю полосу.
+    </p>
+
+    <div id="sliders_here"></div>
+
+    <script src="{{ static 'mgslider.js' }}"></script>
+
+    <script>
+        $(document).ready(function (event) {
+            slider1 = new mgslider("bef_pref", 0.0, 100.0, 1.0);
+            slider1.print(document.getElementById("sliders_here"));
+            slider1.recall(); // Optional line to remember value across errors
+
+    
+        });
+    </script>
+
+
+    <button class="btn btn-primary next-btn" id="nxt" >ДАЛЕЕ</button>
+
+{{ endblock }}
+

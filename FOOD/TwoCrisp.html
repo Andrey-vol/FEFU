@@ -1,0 +1,123 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    МАГАЗИН: КАРТОФЕЛЬНЫЕ ЧИПСЫ. ВЫБОР
+{% endblock %}
+
+{% block content %}
+{{ formfield_errors 'tocrisp_time' }}
+
+<style>
+    .img-fluid {
+        width:  300px;
+        height: 300px;
+        background-size: cover;
+    }
+    #fake {
+        height: 8px;
+        color: #212529;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: .25rem;
+        margin-top: 10px;
+        margin-bottom: 3px;
+
+    } 
+    
+</style>
+<p>
+    Среди следующей группы товаров, пожалуйста, также укажите максимальную цену, за которую 
+    Вы готовы их приобрести. Если Вы не готовы приобрести товар вовсе, укажите 0. 
+</p>
+<div class="container">
+    
+    <div class="row">
+        <div class="col">
+            <img src="{% static 'FOOD/smet_onion.jpeg' %}" class="img-fluid" alt="Picture 1">
+            <p>Чипсы со вкусом "сметана-лук" </p>
+            {{ formfield 'smet'}}
+        </div>
+        <div class="col">
+            <img src="{% static 'FOOD/curry_crab.png' %}" class="img-fluid" alt="Picture 1">
+            <p>Чипсы со вкусом "карри-краб"</p>
+            {{ formfield 'crab'}}
+        </div>
+    </div>
+    <div class="row">
+        <button type="button" id="fake"></button>
+    </div>
+    <div class="row">
+        <div class="col">
+            <img src="{% static 'FOOD/NY_barbecu.png' %}" class="img-fluid" alt="Picture 2">
+            <p>Чипсы со вкусом "Нью Йорк барбекю"</p>
+            {{ formfield 'ny'}}
+        </div>
+        <div class="col">
+            <img src="{% static 'FOOD/cheese.jpeg' %}" class="img-fluid" alt="Picture 2">
+            <p>Чипсы со вкусом "сыр"</p>
+            {{ formfield 'cheese'}}
+        </div>
+    </div>
+    <div class="row">
+        <button type="button" id="fake"></button>
+    </div>
+    <div class="row">
+        <div class="col">
+            <img src="{% static 'FOOD/lays_crab.png' %}" class="img-fluid" alt="Picture 3">
+            <p>Чипсы со вкусом "краб" </p>
+            {{ formfield 'lcrab'}}
+        </div>
+        <div class="col">
+            <img src="{% static 'FOOD/spicy_kor_sauce.png' %}" class="img-fluid" alt="Picture 3">
+            <p>Чипсы со вкусом "острый корейский соус" </p>
+            {{ formfield 'kor'}} 
+        </div>
+    </div>
+    <div class="row">
+        <button type="button" id="fake"></button>
+    </div>
+    <div class="row">
+        <div class="col">
+            <img src="{% static 'FOOD/salt.jpg' %}" class="img-fluid" alt="Picture 4">
+            <p>Чипсы с солью</p>
+            {{ formfield 'salt'}}
+        </div>
+        <div class="col">
+            <img src="{% static 'FOOD/mr_potato_orig.png' %}" class="img-fluid" alt="Picture 4">
+            <p>Чипсы со вкусом "лобстер"</p>
+            {{ formfield 'mr'}}
+        </div>
+    </div>
+    
+</div>
+
+
+<button class="btn btn-primary next-btn" id="nxt" onclick="doTimeStuff()" >ДАЛЕЕ</button>
+
+<input type="hidden" name="tocrisp_time" id="tocrisp_time" />
+
+  
+
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        var pageTimeElapsed = 0;
+        var pageTimerID = -1;
+
+        window.onload = function() { 
+            if(pageTimerID == -1){
+              pageTimerID = setInterval(pageTick, 1000);
+            } 
+        };
+        
+        function pageTick() {
+            pageTimeElapsed++
+            document.getElementById("tocrisp_time").value = pageTimeElapsed;
+        }
+        
+
+    </script>
+{% endblock %}

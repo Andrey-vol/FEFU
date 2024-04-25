@@ -1,0 +1,32 @@
+{{ block title }}
+    АНАЛИЗ ОТВЕТОВ
+{{ endblock }}
+
+{{ block content }}
+{{ formfield_errors 'testy_time' }}
+    Благодарим за Ваши ответы! Результаты показали, что Вы <strong>чаще готовы удивляться и больше открыты новому опыту и впечатлениям</strong>, 
+    чем участники в среднем по группе! 
+
+    <div class="row">
+        <div class="col">
+            <button onclick="doTimeStuff()" class="btn btn-primary next-btn" id="nxt" >ДАЛЕЕ</button>
+        </div>
+    </div>
+    <input type="hidden" name="testy_time" id="testy_time" />
+
+<script>
+    var pageTimeElapsed = 0;
+    var pageTimerID = -1;
+    
+    window.onload = function() { 
+            if(pageTimerID == -1){
+              pageTimerID = setInterval(pageTick, 1000);
+            } 
+        };
+    
+    function pageTick() {
+        pageTimeElapsed++
+        document.getElementById("testy_time").value = pageTimeElapsed;
+    }
+</script>
+{{ endblock }}

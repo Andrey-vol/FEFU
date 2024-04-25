@@ -1,0 +1,413 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    МАГАЗИН: СЛАДКИЕ ГАЗИРОВАННЫЕ НАПИТКИ
+{% endblock %}
+
+
+{% block content %}
+    {{ formfield_errors 'drink_time' }}
+    {{ formfield_errors 'drink_wallet' }}
+    {{ formfield_errors 'cocacola' }}
+    {{ formfield_errors 'necocacola' }}
+    {{ formfield_errors 'pepsicola' }}
+    {{ formfield_errors 'nepepsicola' }}
+    {{ formfield_errors 'sprinter' }}
+    {{ formfield_errors 'nesprinter' }}
+    {{ formfield_errors 'fantasia' }}
+    {{ formfield_errors 'nefantasia' }}
+    {{ formfield_errors 'tonik' }}
+    {{ formfield_errors 'netonik' }}
+    {{ formfield_errors 'persia' }}
+    {{ formfield_errors 'nepersia' }}
+    {{ formfield_errors 'yougurt' }}
+    {{ formfield_errors 'neyougurt' }}
+    {{ formfield_errors 'lychee' }}
+    {{ formfield_errors 'nelychee' }}
+    <style>
+        .img-fluid {
+            width:  300px;
+            height: 300px;
+            background-size: cover;
+        }
+        
+        #persona { 
+            color: rgb(35, 16, 52); 
+            font-size: 18px; 
+            margin-top: 10px;
+        }
+        #fake {
+            height: 8px;
+            color: #212529;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: .25rem;
+            margin-top: 10px;
+            margin-bottom: 3px;
+    
+        } 
+    </style>
+    <p>
+        Теперь перейдем ко второму блоку вопросов. Представьте, что Вы вновь находитесь в магазине. Пожалуйста, выберите те товары, которые бы Вы захотели купить. 
+        Внизу страницы так же будет указана итоговая сумма, которую Вы бы потратили на приобретение товаров. 
+    </p>
+    <div class="container">
+        
+        <div class="row">
+            <div class="col">
+                <img src="{% static 'FOOD/coke.jpg' %}" class="img-fluid" alt="Picture 1">
+                <p>Сладкий газ. напиток 88₽</p>
+                <div class="row">
+                    <div class="col">
+                        <button onclick="Lemon()" class="btn btn-primary drink-btn" id="coke" data-drink="coke" data-price="88" type="button">КУПИТЬ</button>
+                    </div>
+                    <div class="col">
+                        <button onclick="NeLemon()" class="btn btn-primary drink-btn" id="nocoke" data-drink="nocoke" data-price="-88" type="button">УБРАТЬ</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <img src="{% static 'FOOD/everness.png' %}" class="img-fluid" alt="Picture 1">
+                <p>Сладкий газ. напиток со вкусом "биттер-лимон" 80₽</p>
+                <div class="row">
+                    <div class="col">
+                        <button onclick="Bella()" class="btn btn-primary drink-btn" id="lemdr" data-drink="lemdr" data-price="80" type="button">КУПИТЬ</button>
+                    </div>
+                    <div class="col">
+                        <button onclick="NeBella()" class="btn btn-primary drink-btn" id="nolemdr" data-drink="nolemdr" data-price="-80" type="button">УБРАТЬ</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <button type="button" id="fake"></button>
+        </div>
+        <div class="row">
+            <div class="col">
+                <img src="{% static 'FOOD/peach_dr.png' %}" class="img-fluid" alt="Picture 2">
+                <p>Сладкий газ. напиток со вкусом "персик" 87₽</p>
+                <div class="row">
+                    <div class="col">
+                        <button onclick="Vanil()" class="btn btn-primary drink-btn" id="peach" data-drink="peach" data-price="80" type="button">КУПИТЬ</button>
+                    </div>
+                    <div class="col">
+                        <button onclick="NeVanil()" class="btn btn-primary drink-btn" id="nopeach" data-drink="nopeach" data-price="-80" type="button">УБРАТЬ</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <img src="{% static 'FOOD/fanta.png' %}" class="img-fluid" alt="Picture 2">
+                <p>Сладкий газ. напиток 86₽</p>
+                <div class="row">
+                    <div class="col">
+                        <button onclick="Ore()" class="btn btn-primary drink-btn" id="fanta" data-drink="fanta" data-price="86" type="button">КУПИТЬ</button>
+                    </div>
+                    <div class="col">
+                        <button onclick="NeOre()" class="btn btn-primary drink-btn" id="nofanta" data-drink="nofanta" data-price="-86" type="button">УБРАТЬ</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <button type="button" id="fake"></button>
+        </div>
+        <div class="row">
+            <div class="col">
+                <img src="{% static 'FOOD/pepsi.png' %}" class="img-fluid" alt="Picture 3">
+                <p>Сладкий газ. напиток 88₽</p>
+                <div class="row">
+                    <div class="col">
+                        <button onclick="Milk()" class="btn btn-primary drink-btn" id="pepsi" data-drink="pepsi" data-price="88" type="button">КУПИТЬ</button>
+                    </div>
+                    <div class="col">
+                        <button onclick="NeMilk()" class="btn btn-primary drink-btn" id="nopepsi" data-drink="nopepsi" data-price="-88" type="button">УБРАТЬ</button>
+                    </div>
+                </div>  
+            </div>
+            <div class="col">
+                <img src="{% static 'FOOD/soju_yogurt.png' %}" class="img-fluid" alt="Picture 3">
+                <p>Сладкий газ. напиток со вкусом "соджу-йогурт" 95₽</p>
+                <div class="row">
+                    <div class="col">
+                        <button onclick="Cream()" class="btn btn-primary drink-btn" id="soju" data-drink="soju" data-price="95" type="button">КУПИТЬ</button>
+                    </div>
+                    <div class="col">
+                        <button onclick="NeCream()" class="btn btn-primary drink-btn" id="nosoju" data-drink="nosoju" data-price="-95" type="button">УБРАТЬ</button>
+                    </div>
+                </div>  
+            </div>
+        </div>
+        <div class="row">
+            <button type="button" id="fake"></button>
+        </div>
+        <div class="row">
+            <div class="col">
+                <img src="{% static 'FOOD/lichee.png' %}" class="img-fluid" alt="Picture 4">
+                <p>Сладкий газ. напиок со вкусом "личи"  89₽</p>
+                <div class="row">
+                    <div class="col">
+                        <button onclick="Yubu()" class="btn btn-primary drink-btn" id="lich" data-drink="lich" data-price="89" type="button">КУПИТЬ</button>
+                    </div>
+                    <div class="col">
+                        <button onclick="NeYubu()" class="btn btn-primary drink-btn" id="nolich" data-drink="nolich" data-price="-89" type="button">УБРАТЬ</button>
+                    </div>
+                </div>  
+            </div>
+            <div class="col">
+                <img src="{% static 'FOOD/sprite.png' %}" class="img-fluid" alt="Picture 4">
+                <p>Сладкий газ. напиток 87₽</p>
+                <div class="row">
+                    <div class="col">
+                        <button onclick="Shokol()" class="btn btn-primary drink-btn" id="sprite" data-drink="sprite" data-price="87" type="button">КУПИТЬ</button>
+                    </div>
+                    <div class="col">
+                        <button onclick="NeShokol()" class="btn btn-primary drink-btn" id="nosprite" data-drink="nosprite" data-price="-87" type="button">УБРАТЬ</button>
+                    </div>
+                </div>  
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p id="persona"><strong>ВЫ ПОТРАТИЛИ <span id="wallet">0</span>₽ НА ПОКУПКУ СЛАДКИХ ГАЗИРОВАННЫХ НАПИТКОВ </strong></p>
+            </div>
+        </div>
+    </div>
+
+    
+    <button class="btn btn-primary next-btn" id="nxt" onclick="Koshel()" onclick="doTimeStuff()" >ДАЛЕЕ</button>
+    <input type="hidden" name="drink_wallet" id="drink_wallet" />
+    <input type="hidden" name="drink_time" id="drink_time" />
+    <input type="hidden" name="cocacola" id="cocacola" />
+    <input type="hidden" name="necocacola" id="necocacola" />
+    <input type="hidden" name="pepsicola" id="pepsicola" />
+    <input type="hidden" name="nepepsicola" id="nepepsicola" />
+    <input type="hidden" name="sprinter" id="sprinter" />
+    <input type="hidden" name="nesprinter" id="nesprinter" />
+    <input type="hidden" name="fantasia" id="fantasia" />
+    <input type="hidden" name="nefantasia" id="nefantasia" />
+    <input type="hidden" name="tonik" id="tonik" />
+    <input type="hidden" name="netonik" id="netonik" />
+    <input type="hidden" name="persia" id="persia" />
+    <input type="hidden" name="nepersia" id="nepersia" />
+    <input type="hidden" name="yougurt" id="yougurt" />
+    <input type="hidden" name="neyougurt" id="neyougurt" />
+    <input type="hidden" name="lychee" id="lychee" />
+    <input type="hidden" name="nelychee" id="nelychee" />
+
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        var pageTimeElapsed = 0;
+        var pageTimerID = -1;
+
+        window.onload = function() { 
+            if(pageTimerID == -1){
+              pageTimerID = setInterval(pageTick, 1000);
+            } 
+        };
+        var wallet = 0;
+        document.getElementById('cocacola').value = 0;
+        document.getElementById('necocacola').value = 0;
+        document.getElementById('pepsicola').value = 0;
+        document.getElementById('nepepsicola').value = 0;
+        document.getElementById('sprinter').value = 0;
+        document.getElementById('nesprinter').value = 0;
+        document.getElementById('fantasia').value = 0;
+        document.getElementById('nefantasia').value = 0;
+        document.getElementById('tonik').value = 0;
+        document.getElementById('netonik').value = 0;
+        document.getElementById('persia').value = 0;
+        document.getElementById('nepersia').value = 0;
+        document.getElementById('yougurt').value = 0;
+        document.getElementById('neyougurt').value = 0;
+        document.getElementById('lychee').value = 0;
+        document.getElementById('nelychee').value = 0;
+        $(document).ready(function() {
+           
+
+            $('.drink-btn').click(function() {
+                var drink = $(this).data('drink');
+                var price = $(this).data('price');
+                wallet += price;
+                $('#wallet').text(wallet);
+                return wallet;
+                //function submitValue() {
+                    //localStorage.setItem('myValue', wallet);
+                    // Redirect to the second page
+                    //window.location.href = 'Crisps.html';
+                //}
+            });
+
+            
+            const coke = document.querySelector('#coke');
+            coke.addEventListener('click', function onClick() {
+            coke.style.backgroundColor = 'green';
+            coke.style.color = 'white';
+            this.disabled = true;
+            });
+            const nocoke = document.querySelector('#nocoke');
+            nocoke.addEventListener('click', function onClick() {
+            nocoke.style.backgroundColor = 'salmon';
+            nocoke.style.color = 'white';
+            this.disabled = true;
+            });
+            const lemdr = document.querySelector('#lemdr');
+            lemdr.addEventListener('click', function onClick() {
+            lemdr.style.backgroundColor = 'green';
+            lemdr.style.color = 'white';
+            this.disabled = true;
+            });
+            const nolemdr = document.querySelector('#nolemdr');
+            nolemdr.addEventListener('click', function onClick() {
+            nolemdr.style.backgroundColor = 'salmon';
+            nolemdr.style.color = 'white';
+            this.disabled = true;
+            });
+            const peach = document.querySelector('#peach');
+            peach.addEventListener('click', function onClick() {
+            peach.style.backgroundColor = 'green';
+            peach.style.color = 'white';
+            this.disabled = true;
+            });
+            const nopeach = document.querySelector('#nopeach');
+            nopeach.addEventListener('click', function onClick() {
+            nopeach.style.backgroundColor = 'salmon';
+            nopeach.style.color = 'white';
+            this.disabled = true;
+            });
+            const fanta = document.querySelector('#fanta');
+            fanta.addEventListener('click', function onClick() {
+            fanta.style.backgroundColor = 'green';
+            fanta.style.color = 'white';
+            this.disabled = true;
+            });
+            const nofanta = document.querySelector('#nofanta');
+            nofanta.addEventListener('click', function onClick() {
+            nofanta.style.backgroundColor = 'salmon';
+            nofanta.style.color = 'white';
+            this.disabled = true;
+            });
+            const pepsi = document.querySelector('#pepsi');
+            pepsi.addEventListener('click', function onClick() {
+            pepsi.style.backgroundColor = 'green';
+            pepsi.style.color = 'white';
+            this.disabled = true;
+            });
+            const nopepsi = document.querySelector('#nopepsi');
+            nopepsi.addEventListener('click', function onClick() {
+            nopepsi.style.backgroundColor = 'salmon';
+            nopepsi.style.color = 'white';
+            this.disabled = true;
+            });
+            const soju = document.querySelector('#soju');
+            soju.addEventListener('click', function onClick() {
+            soju.style.backgroundColor = 'green';
+            soju.style.color = 'white';
+            this.disabled = true;
+            });
+            const nosoju = document.querySelector('#nosoju');
+            nosoju.addEventListener('click', function onClick() {
+            nosoju.style.backgroundColor = 'salmon';
+            nosoju.style.color = 'white';
+            this.disabled = true;
+            });
+            const lich = document.querySelector('#lich');
+            lich.addEventListener('click', function onClick() {
+            lich.style.backgroundColor = 'green';
+            lich.style.color = 'white';
+            this.disabled = true;
+            });
+            const nolich = document.querySelector('#nolich');
+            nolich.addEventListener('click', function onClick() {
+            nolich.style.backgroundColor = 'salmon';
+            nolich.style.color = 'white';
+            this.disabled = true;
+            });
+            const sprite = document.querySelector('#sprite');
+            sprite.addEventListener('click', function onClick() {
+            sprite.style.backgroundColor = 'green';
+            sprite.style.color = 'white';
+            this.disabled = true;
+            });
+            const nosprite = document.querySelector('#nosprite');
+            nosprite.addEventListener('click', function onClick() {
+            nosprite.style.backgroundColor = 'salmon';
+            nosprite.style.color = 'white';
+            this.disabled = true;
+            });
+            
+
+
+
+
+
+        });    
+        function pageTick() {
+            pageTimeElapsed++
+            document.getElementById("drink_time").value = pageTimeElapsed;
+        }
+
+        function Koshel(){
+            document.getElementById('drink_wallet').value = wallet;
+        }
+        function Lemon(){
+            document.getElementById('cocacola').value = 1;
+        }
+        function NeLemon(){
+            document.getElementById('cocacola').value = 1;
+        }
+        function Milk(){
+            document.getElementById('pepsicola').value = 1;
+        }
+        function NeMilk(){
+            document.getElementById('nepepsicola').value = 1;
+        }
+        function Shokol(){
+            document.getElementById('sprinter').value = 1;
+        }
+        function NeShokol(){
+            document.getElementById('nesprinter').value = 1;
+        }
+        function Ore(){
+            document.getElementById('fantasia').value = 1;
+        }
+        function NeOre(){
+            document.getElementById('nefantasia').value = 1;
+        }
+        function Bella(){
+            document.getElementById('tonik').value = 1;
+        }
+        function NeBella(){
+            document.getElementById('netonik').value = 1;
+        }
+        function Cream(){
+            document.getElementById('yougurt').value = 1;
+        }
+        function NeCream(){
+            document.getElementById('neyougurt').value = 1;
+        }
+        function Vanil(){
+            document.getElementById('persia').value = 1;
+        }
+        function NeVanil(){
+            document.getElementById('nepersia').value = 1;
+        }
+        function Yubu(){
+            document.getElementById('lychee').value = 1;
+        }
+        function NeYubu(){
+            document.getElementById('nelychee').value = 1;
+        } 
+                
+
+
+        //document.getElementById('wallet') = function () {
+            //sessionStorage.setItem('my-input_save', wallet);
+            //}
+        
+        
+    </script>
+{% endblock %}

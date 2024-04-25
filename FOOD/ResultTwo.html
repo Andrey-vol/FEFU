@@ -1,0 +1,15 @@
+{{ block title }}
+    РЕЗУЛЬТАТ ИГРЫ
+{{ endblock }}
+
+{{ block content }}
+    На бонусном уровне комьютер сгенерировал отрезок от -{{ player.compucter_2 }}% до {{ player.compucter_2 }}%.
+    Случайное число, выбранное из итогового диапазона, составило {{ player.coeff_2 }}%, таким образом 
+    Ваше вознаграждение за второй блок вопросов составляет <strong>{{ player.offpay }}₽</strong>.
+
+    <div class="row">
+        <div class="col">
+            <button class="btn btn-primary next-btn" id="nxt" >ДАЛЕЕ</button>
+        </div>
+    </div>
+{{ endblock }}

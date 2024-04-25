@@ -1,0 +1,404 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    МАГАЗИН: КАРТОФЕЛЬНЫЕ ЧИПСЫ
+{% endblock %}
+
+{% block content %}
+    {{ formfield_errors 'crisp_time' }}
+    {{ formfield_errors 'crisp_wallet' }}
+    {{ formfield_errors 'smetana' }}
+    {{ formfield_errors 'nesmetana' }}
+    {{ formfield_errors 'karri' }}
+    {{ formfield_errors 'nekarri' }}
+    {{ formfield_errors 'newyork' }}
+    {{ formfield_errors 'nenewyork' }}
+    {{ formfield_errors 'syr' }}
+    {{ formfield_errors 'nesyr' }}
+    {{ formfield_errors 'lacrab' }}
+    {{ formfield_errors 'nelacrab' }}
+    {{ formfield_errors 'korean' }}
+    {{ formfield_errors 'nekorean' }}
+    {{ formfield_errors 'sol' }}
+    {{ formfield_errors 'nesol' }}
+    {{ formfield_errors 'lobik' }}
+    {{ formfield_errors 'nelobik' }}
+<style>
+    .img-fluid {
+        width:  300px;
+        height: 300px;
+        background-size: cover;
+    }
+    
+    #persona { 
+        color: rgb(35, 16, 52); 
+        font-size: 18px; 
+        margin-top: 10px;
+    } 
+    #fake {
+        height: 8px;
+        color: #212529;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: .25rem;
+        margin-top: 10px;
+        margin-bottom: 3px;
+
+    }
+</style>
+
+<div class="container">
+    
+    <div class="row">
+        <div class="col">
+            <img src="{% static 'FOOD/smet_onion.jpeg' %}" class="img-fluid" alt="Picture 1">
+            <p>Чипсы со вкусом "сметана-лук"  133₽</p>
+            <div class="row">
+                <div class="col">
+                    <button onclick="Lemon()" class="btn btn-primary crisps-btn" id="smet" data-crisps="smet" data-price="133" type="button">КУПИТЬ</button>
+                </div>
+                <div class="col">
+                    <button onclick="NeLemon()" class="btn btn-primary crisps-btn" id="nosmet" data-crisps="nosmet" data-price="-133" type="button">УБРАТЬ</button>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <img src="{% static 'FOOD/curry_crab.png' %}" class="img-fluid" alt="Picture 1">
+            <p>Чипсы со вкусом "карри-краб" 143₽</p>
+            <div class="row">
+                <div class="col">
+                    <button onclick="Milk()" class="btn btn-primary crisps-btn" id="crab" data-crisps="crab" data-price="143" type="button">КУПИТЬ</button>
+                </div>
+                <div class="col">
+                    <button onclick="NeMilk()" class="btn btn-primary crisps-btn" id="nocrab" data-crisps="nocrab" data-price="-143" type="button">УБРАТЬ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <button type="button" id="fake"></button>
+    </div>
+    <div class="row">
+        <div class="col">
+            <img src="{% static 'FOOD/NY_barbecu.png' %}" class="img-fluid" alt="Picture 2">
+            <p>Чипсы со вкусом "Нью Йорк барбекю" 142₽</p>
+            <div class="row">
+                <div class="col">
+                    <button onclick="Shokol()" class="btn btn-primary crisps-btn" id="ny" data-crisps="ny" data-price="142" type="button">КУПИТЬ</button>
+                </div>
+                <div class="col">
+                    <button onclick="NeShokol()" class="btn btn-primary crisps-btn" id="nony" data-crisps="nony" data-price="-142" type="button">УБРАТЬ</button>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <img src="{% static 'FOOD/cheese.jpeg' %}" class="img-fluid" alt="Picture 2">
+            <p>Чипсы со вкусом "сыр"  129₽</p>
+            <div class="row">
+                <div class="col">
+                    <button onclick="Ore()" class="btn btn-primary crisps-btn" id="cheese" data-crisps="cheese" data-price="129" type="button">КУПИТЬ</button>
+                </div>
+                <div class="col">
+                    <button onclick="NeOre()" class="btn btn-primary crisps-btn" id="nocheese" data-crisps="nocheese" data-price="-129" type="button">УБРАТЬ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <button type="button" id="fake"></button>
+    </div>
+    <div class="row">
+        <div class="col">
+            <img src="{% static 'FOOD/lays_crab.png' %}" class="img-fluid" alt="Picture 3">
+            <p>Чипсы со вкусом "краб"  139₽</p>
+            <div class="row">
+                <div class="col">
+                    <button onclick="Bella()" class="btn btn-primary crisps-btn" id="lcrab" data-crisps="lcrab" data-price="139" type="button">КУПИТЬ</button>
+                </div>
+                <div class="col">
+                    <button onclick="NeBella()" class="btn btn-primary crisps-btn" id="nolcrab" data-crisps="nolcrab" data-price="-139" type="button">УБРАТЬ</button>
+                </div>
+            </div>  
+        </div>
+        <div class="col">
+            <img src="{% static 'FOOD/spicy_kor_sauce.png' %}" class="img-fluid" alt="Picture 3">
+            <p>Чипсы со вкусом "острый корейский соус"  144₽</p>
+            <div class="row">
+                <div class="col">
+                    <button onclick="Vanil()" class="btn btn-primary crisps-btn" id="kor" data-crisps="kor" data-price="144" type="button">КУПИТЬ</button>
+                </div>
+                <div class="col">
+                    <button onclick="NeVanil()" class="btn btn-primary crisps-btn" id="nokor" data-crisps="nokor" data-price="-144" type="button">УБРАТЬ</button>
+                </div>
+            </div>  
+        </div>
+    </div>
+    <div class="row">
+        <button type="button" id="fake"></button>
+    </div>
+    <div class="row">
+        <div class="col">
+            <img src="{% static 'FOOD/salt.jpg' %}" class="img-fluid" alt="Picture 4">
+            <p>Чипсы с солью  124₽</p>
+            <div class="row">
+                <div class="col">
+                    <button onclick="Cream()" class="btn btn-primary crisps-btn" id="salt" data-crisps="salt" data-price="124" type="button">КУПИТЬ</button>
+                </div>
+                <div class="col">
+                    <button onclick="NeCream()" class="btn btn-primary crisps-btn" id="nosalt" data-crisps="nosalt" data-price="-124" type="button">УБРАТЬ</button>
+                </div>
+            </div>  
+        </div>
+        <div class="col">
+            <img src="{% static 'FOOD/lobster.png' %}" class="img-fluid" alt="Picture 4">
+            <p>Чипсы со вкусом "лобстер"  131₽</p>
+            <div class="row">
+                <div class="col">
+                    <button onclick="Yubu()" class="btn btn-primary crisps-btn" id="mr" data-crisps="mr" data-price="131" type="button">КУПИТЬ</button>
+                </div>
+                <div class="col">
+                    <button onclick="NeYubu()" class="btn btn-primary crisps-btn" id="nomr" data-crisps="nomr" data-price="-131" type="button">УБРАТЬ</button>
+                </div>
+            </div>  
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <p id="persona"><strong>ВЫ ПОТРАТИЛИ <span id="wallet">0</span>₽ НА ПОКУПКУ ЧИПСОВ </strong></p>
+        </div>
+    </div>
+</div>
+
+
+    <button class="btn btn-primary next-btn" id="nxt" onclick="Koshel()" onclick="doTimeStuff()" >ДАЛЕЕ</button>
+    <input type="hidden" name="crisp_wallet" id="crisp_wallet" />
+    <input type="hidden" name="crisp_time" id="crisp_time" />
+    <input type="hidden" name="smetana" id="smetana" />
+    <input type="hidden" name="nesmetana" id="nesmetana" />
+    <input type="hidden" name="karri" id="karri" />
+    <input type="hidden" name="nekarri" id="nekarri" />
+    <input type="hidden" name="newyork" id="newyork" />
+    <input type="hidden" name="nenewyork" id="nenewyork" />
+    <input type="hidden" name="syr" id="syr" />
+    <input type="hidden" name="nesyr" id="nesyr" />
+    <input type="hidden" name="lacrab" id="lacrab" />
+    <input type="hidden" name="nelacrab" id="nelacrab" />
+    <input type="hidden" name="korean" id="korean" />
+    <input type="hidden" name="nekorean" id="nekorean" />
+    <input type="hidden" name="sol" id="sol" />
+    <input type="hidden" name="nesol" id="nesol" />
+    <input type="hidden" name="lobik" id="lobik" />
+    <input type="hidden" name="nelobik" id="nelobik" />
+
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        var pageTimeElapsed = 0;
+        var pageTimerID = -1;
+
+        window.onload = function() { 
+            if(pageTimerID == -1){
+              pageTimerID = setInterval(pageTick, 1000);
+            } 
+        };
+        var wallet = 0;
+        document.getElementById('smetana').value = 0;
+        document.getElementById('nesmetana').value = 0;
+        document.getElementById('karri').value = 0;
+        document.getElementById('nekarri').value = 0;
+        document.getElementById('newyork').value = 0;
+        document.getElementById('nenewyork').value = 0;
+        document.getElementById('syr').value = 0;
+        document.getElementById('nesyr').value = 0;
+        document.getElementById('lacrab').value = 0;
+        document.getElementById('nelacrab').value = 0;
+        document.getElementById('korean').value = 0;
+        document.getElementById('nekorean').value = 0;
+        document.getElementById('sol').value = 0;
+        document.getElementById('nesol').value = 0;
+        document.getElementById('lobik').value = 0;
+        document.getElementById('nelobik').value = 0;
+        $(document).ready(function() {
+            //var wallet = sessionStorage.getItem('my-input_save');
+            
+            //window.onload = function() {
+                //var wallet = localStorage.getItem('myValue');
+                //var output = int(document.getElementById('wallet'));
+                //output.innerText = wallet;
+                //return wallet;
+            
+            //{% static 'FOOD/curry_crab.png' %}
+            //{% static 'FOOD/mr_potato_orig.png' %}
+            //{% static 'FOOD/NY_barbecu.png' %}
+            //{% static 'FOOD/spicy_kor_sauce.png' %}
+            
+            
+            $('.crisps-btn').click(function() {
+                var crisps = $(this).data('crisps');
+                var price = $(this).data('price');
+                wallet += price;
+                $('#wallet').text(wallet);
+                return wallet
+
+                
+            });
+            const salt = document.querySelector('#salt');
+            salt.addEventListener('click', function onClick() {
+            salt.style.backgroundColor = 'green';
+            salt.style.color = 'white';
+            this.disabled = true;
+            });
+            const nosalt = document.querySelector('#nosalt');
+            nosalt.addEventListener('click', function onClick() {
+            nosalt.style.backgroundColor = 'salmon';
+            nosalt.style.color = 'white';
+            this.disabled = true;
+            });
+            const crab = document.querySelector('#crab');
+            crab.addEventListener('click', function onClick() {
+            crab.style.backgroundColor = 'green';
+            crab.style.color = 'white';
+            this.disabled = true;
+            });
+            const nocrab = document.querySelector('#nocrab');
+            nocrab.addEventListener('click', function onClick() {
+            nocrab.style.backgroundColor = 'salmon';
+            nocrab.style.color = 'white';
+            this.disabled = true;
+            });
+            const smet = document.querySelector('#smet');
+            smet.addEventListener('click', function onClick() {
+            smet.style.backgroundColor = 'green';
+            smet.style.color = 'white';
+            this.disabled = true;
+            });
+            const nosmet = document.querySelector('#nosmet');
+            nosmet.addEventListener('click', function onClick() {
+            nosmet.style.backgroundColor = 'salmon';
+            nosmet.style.color = 'white';
+            this.disabled = true;
+            });
+            const cheese = document.querySelector('#cheese');
+            cheese.addEventListener('click', function onClick() {
+            cheese.style.backgroundColor = 'green';
+            cheese.style.color = 'white';
+            this.disabled = true;
+            });
+            const nocheese = document.querySelector('#nocheese');
+            nocheese.addEventListener('click', function onClick() {
+            nocheese.style.backgroundColor = 'salmon';
+            nocheese.style.color = 'white';
+            this.disabled = true;
+            });
+            const ny = document.querySelector('#ny');
+            ny.addEventListener('click', function onClick() {
+            ny.style.backgroundColor = 'green';
+            ny.style.color = 'white';
+            this.disabled = true;
+            });
+            const nony = document.querySelector('#nony');
+            nony.addEventListener('click', function onClick() {
+            nony.style.backgroundColor = 'salmon';
+            nony.style.color = 'white';
+            this.disabled = true;
+            });
+            const lcrab = document.querySelector('#lcrab');
+            lcrab.addEventListener('click', function onClick() {
+            lcrab.style.backgroundColor = 'green';
+            lcrab.style.color = 'white';
+            this.disabled = true;
+            });
+            const nolcrab = document.querySelector('#nolcrab');
+            nolcrab.addEventListener('click', function onClick() {
+            nolcrab.style.backgroundColor = 'salmon';
+            nolcrab.style.color = 'white';
+            this.disabled = true;
+            });
+            const kor = document.querySelector('#kor');
+            kor.addEventListener('click', function onClick() {
+            kor.style.backgroundColor = 'green';
+            kor.style.color = 'white';
+            this.disabled = true;
+            });
+            const nokor = document.querySelector('#nokor');
+            nokor.addEventListener('click', function onClick() {
+            nokor.style.backgroundColor = 'salmon';
+            nokor.style.color = 'white';
+            this.disabled = true;
+            });
+            const mr = document.querySelector('#mr');
+            mr.addEventListener('click', function onClick() {
+            mr.style.backgroundColor = 'green';
+            mr.style.color = 'white';
+            this.disabled = true;
+            });
+            const nomr = document.querySelector('#nomr');
+            nomr.addEventListener('click', function onClick() {
+            nomr.style.backgroundColor = 'salmon';
+            nomr.style.color = 'white';
+            this.disabled = true;
+            });
+            
+        });
+        function pageTick() {
+            pageTimeElapsed++
+            document.getElementById("crisp_time").value = pageTimeElapsed;
+        }
+        function Koshel(){
+            document.getElementById('crisp_wallet').value = wallet;
+        }
+        function Lemon(){
+            document.getElementById('smetana').value = 1;
+        }
+        function NeLemon(){
+            document.getElementById('smetana').value = 1;
+        }
+        function Milk(){
+            document.getElementById('karri').value = 1;
+        }
+        function NeMilk(){
+            document.getElementById('nekarri').value = 1;
+        }
+        function Shokol(){
+            document.getElementById('newyork').value = 1;
+        }
+        function NeShokol(){
+            document.getElementById('nenewyork').value = 1;
+        }
+        function Ore(){
+            document.getElementById('syr').value = 1;
+        }
+        function NeOre(){
+            document.getElementById('nesyr').value = 1;
+        }
+        function Bella(){
+            document.getElementById('lacrab').value = 1;
+        }
+        function NeBella(){
+            document.getElementById('nelacrab').value = 1;
+        }
+        function Cream(){
+            document.getElementById('sol').value = 1;
+        }
+        function NeCream(){
+            document.getElementById('nesol').value = 1;
+        }
+        function Vanil(){
+            document.getElementById('korean').value = 1;
+        }
+        function NeVanil(){
+            document.getElementById('nekorean').value = 1;
+        }
+        function Yubu(){
+            document.getElementById('lobik').value = 1;
+        }
+        function NeYubu(){
+            document.getElementById('nelobik').value = 1;
+        }
+
+
+    </script>
+{% endblock %}
